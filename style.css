@@ -1,0 +1,60 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f4f4f4;
+}
+
+.container {
+  max-width: 500px;
+  margin: auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  margin-top: 30px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #4CAF50;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input, select, button {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  font-weight: bold;
+  border: none;
+}
+
+#saldo {
+  margin: 20px 0;
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: center;
+}
+
+#lista-transacoes {
+  list-style: none;
+  padding: 0;
+}
+
+#lista-transacoes li {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+canvas {
+  margin-top: 20px;
+}

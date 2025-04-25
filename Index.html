@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#4CAF50" />
+  <title>Controle de Gastos</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
+</head>
+<body>
+  <div class="container">
+    <h1>Controle de Gastos</h1>
+    <form id="form">
+      <input type="text" id="descricao" placeholder="Descrição" required />
+      <input type="number" id="valor" placeholder="Valor" required />
+      <select id="categoria">
+        <option value="Alimentação">Alimentação</option>
+        <option value="Transporte">Transporte</option>
+        <option value="Lazer">Lazer</option>
+        <option value="Outros">Outros</option>
+      </select>
+      <select id="tipo">
+        <option value="receita">Receita</option>
+        <option value="despesa">Despesa</option>
+      </select>
+      <button type="submit">Adicionar</button>
+    </form>
+
+    <div id="saldo"></div>
+
+    <canvas id="grafico"></canvas>
+
+    <ul id="lista-transacoes"></ul>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js');
+    }
+  </script>
+</body>
+</html>
