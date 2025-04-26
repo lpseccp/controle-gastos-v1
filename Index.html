@@ -1,19 +1,19 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!DOCTYPE html><html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#4CAF50" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#4CAF50">
   <title>Controle de Gastos</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="manifest" href="manifest.json" />
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <div class="container">
     <h1>Controle de Gastos</h1>
     <form id="form">
-      <input type="text" id="descricao" placeholder="Descrição" required />
-      <input type="number" id="valor" placeholder="Valor" required />
+      <input type="text" id="descricao" placeholder="Descrição" required>
+      <input type="number" id="valor" placeholder="Valor" required>
       <select id="categoria">
         <option value="Alimentação">Alimentação</option>
         <option value="Transporte">Transporte</option>
@@ -25,21 +25,15 @@
         <option value="despesa">Despesa</option>
       </select>
       <button type="submit">Adicionar</button>
-    </form>
+    </form><div id="saldo">Saldo Atual: R$ 0.00</div>
+<canvas id="grafico"></canvas>
+<ul id="lista-transacoes"></ul>
 
-    <div id="saldo"></div>
-
-    <canvas id="grafico"></canvas>
-
-    <ul id="lista-transacoes"></ul>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="script.js"></script>
-  <script>
+  </div>  <script src="script.js"></script>  <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js');
+      navigator.serviceWorker.register('sw.js')
+        .then(reg => console.log('Service Worker registrado:', reg))
+        .catch(err => console.error('Erro ao registrar Service Worker:', err));
     }
-  </script>
-</body>
+  </script></body>
 </html>
