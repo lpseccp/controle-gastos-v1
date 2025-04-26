@@ -3,16 +3,18 @@ const lista = document.getElementById('lista-transacoes');
 const saldoDiv = document.getElementById('saldo');
 const grafico = document.getElementById('grafico');
 
-let transacoes = [];
+let transacoes = JSON.parse(localStorage.getItem('transacoes')) || [];
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
+
   const descricao = document.getElementById('descricao').value;
   const valor = parseFloat(document.getElementById('valor').value);
   const categoria = document.getElementById('categoria').value;
   const tipo = document.getElementById('tipo').value;
 
   transacoes.push({ descricao, valor, categoria, tipo });
+  localStorage.setItem('transacoes', JSON.stringify(transacoes));
   form.reset();
   atualizarTela();
 });
@@ -29,12 +31,11 @@ function atualizarTela() {
 
     saldo += item.tipo === 'receita' ? item.valor : -item.valor;
     if (!categorias[item.categoria]) categorias[item.categoria] = 0;
-    categorias[item.categoria] += item.tipo === 'despesa' ? item.valor : 0;
+    if (item.tipo === 'despesa') categorias[item.categoria] += item.valor;
   });
 
   saldoDiv.innerText = `Saldo Atual: R$ ${saldo.toFixed(2)}`;
-  if (saldo < 0) saldoDiv.style.color = 'red';
-  else saldoDiv.style.color = 'green';
+  saldoDiv.style.color = saldo < 0 ? 'red' : 'green';
 
   atualizarGrafico(categorias);
 }
@@ -66,3 +67,5 @@ function atualizarGrafico(dados) {
     }
   });
 }
+
+atualizarTela();
